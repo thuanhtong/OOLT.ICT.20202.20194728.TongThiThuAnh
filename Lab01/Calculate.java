@@ -20,3 +20,4 @@ public class Calculate{
 		else System.out.println("Not existing quotient (divisor=0)");
 	}
 }
+
