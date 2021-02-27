@@ -31,3 +31,4 @@ public class SolveFirstDegreeTwoVarEq {
         else System.out.println("The equation has a solution: x1= " + (d1/d) + "; x2= " + (d2/d));
     }
 }
+
