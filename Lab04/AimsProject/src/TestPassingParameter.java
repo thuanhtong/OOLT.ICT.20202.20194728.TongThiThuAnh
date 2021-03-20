@@ -19,7 +19,7 @@ public class TestPassingParameter {
 //			o1=o2;
 //			o2=tmp;
 //		}
-		
+
 		public static void swap(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
 			String title = dvd1.getTitle();
 			String category = dvd1.getCategory();
@@ -39,7 +39,7 @@ public class TestPassingParameter {
 			dvd2.setLength(length);
 			dvd2.setCost(cost);
 		}
-		
+
 		
 		public static void changeTitle(DigitalVideoDisc dvd, String title) {
 			String oldTitle = dvd.getTitle();

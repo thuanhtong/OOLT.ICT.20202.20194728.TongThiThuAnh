@@ -54,7 +54,7 @@ public class Aims {
 		DigitalVideoDisc dvd15= new DigitalVideoDisc("Captain America: Civil War", "Science Fiction", 26.0f);
 		anOrder.addDigitalVideoDisc(dvd15);
 		
-		DigitalVideoDisc list[] =new DigitalVideoDisc[6];
+		DigitalVideoDisc list[] = new DigitalVideoDisc[10];
 		
 		DigitalVideoDisc dvd16= new DigitalVideoDisc("Iron man 1", "Science Fiction", 25.0f);
 		list[0]=dvd16;
@@ -73,8 +73,9 @@ public class Aims {
 		
 		DigitalVideoDisc dvd21= new DigitalVideoDisc("Guadians of the Galaxy 1", "Science Fiction", 24.8f);
 		list[5]=dvd21;
-		
 		anOrder.addDigitalVideoDisc(list);
+		//anOrder.addDigitalVideoDisc(dvd16, dvd17, dvd18, dvd19, dvd20, dvd21);
+		
 		// remove disc from the cart
 //		anOrder.removeDigitalVideoDisc(dvd4);
 //		anOrder.removeDigitalVideoDisc(dvd5);
