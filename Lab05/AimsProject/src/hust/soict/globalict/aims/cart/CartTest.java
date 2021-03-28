@@ -26,8 +26,8 @@ public class CartTest {
 		
 		//Disc with same name and cost
 		DigitalVideoDisc dvd10= new DigitalVideoDisc("Captain America", "Science Fiction", "Joe Johnston", 155, 25.0f);
-		DigitalVideoDisc dvd11= new DigitalVideoDisc("Captain America", "Science Fiction","Anthony Russo", 150, 25.0f);
-		DigitalVideoDisc dvd12= new DigitalVideoDisc("Captain America", "Science Fiction","Russo Brother", 170, 26.0f);
+		DigitalVideoDisc dvd11= new DigitalVideoDisc("Captain America", "Science Fiction","Anthony Russo", 150, 26.0f);
+		DigitalVideoDisc dvd12= new DigitalVideoDisc("Captain America", "Science Fiction","Russo Brother", 170, 25.0f);
 		
 		anOrder.addDigitalVideoDisc(dvd1);
 		anOrder.addDigitalVideoDisc(dvd2);
@@ -38,7 +38,7 @@ public class CartTest {
 		anOrder.addDigitalVideoDisc(dvd10,dvd11);
 		anOrder.addDigitalVideoDisc(dvd12);
 		
-		DigitalVideoDisc list[] = new DigitalVideoDisc[20];
+		DigitalVideoDisc list[]= new DigitalVideoDisc[20];
 		DigitalVideoDisc dvd13= new DigitalVideoDisc("Iron man 1", "Science Fiction", 25.0f);
 		list[0]=dvd13;
 		DigitalVideoDisc dvd14= new DigitalVideoDisc("Iron man 2", "Science Fiction", 25.0f);
@@ -49,8 +49,8 @@ public class CartTest {
 		list[3]=dvd16;
 		DigitalVideoDisc dvd17= new DigitalVideoDisc("Doctor Strange", "Science Fiction", 26.0f);
 		list[4]=dvd17;
-		anOrder.addDigitalVideoDisc(list);
-		
+		//anOrder.addDigitalVideoDisc(list);
+		anOrder.addDigitalVideoDisc(dvd13,dvd14,dvd15,dvd16,dvd17);
 		anOrder.removeDigitalVideoDisc(dvd5);
 		
 		System.out.println();
@@ -65,8 +65,11 @@ public class CartTest {
 		
 		System.out.println();
 		anOrder.printList();
-		
-
+		DigitalVideoDisc dvd18= new DigitalVideoDisc(dvd13.getTitle(), dvd13.getCategory(), dvd13.getCost());
+		anOrder.addDigitalVideoDisc(dvd18);
+		anOrder.printList();
+		anOrder.sortByTitle();
 	}
-
 }
+
+

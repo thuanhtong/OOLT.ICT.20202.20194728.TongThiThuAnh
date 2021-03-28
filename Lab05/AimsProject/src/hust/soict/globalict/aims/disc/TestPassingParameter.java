@@ -27,18 +27,21 @@ public class TestPassingParameter {
 			String director =dvd1.getDirector();
 			int length= dvd1.getLength();
 			float cost= dvd1.getCost();
+			int id= dvd1.getId();
 			
 			dvd1.setTitle(dvd2.getTitle());
 			dvd1.setCategory(dvd2.getCategory());
 			dvd1.setDirector(dvd2.getDirector());
 			dvd1.setLength(dvd2.getLength());
 			dvd1.setCost(dvd2.getCost());
+			dvd1.setId(dvd2.getId());
 			
 			dvd2.setTitle(title);
 			dvd2.setCategory(category);
 			dvd2.setDirector(director);
 			dvd2.setLength(length);
 			dvd2.setCost(cost);
+			dvd2.setId(id);
 		}
 
 		

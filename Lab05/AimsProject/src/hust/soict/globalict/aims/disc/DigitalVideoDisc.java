@@ -1,5 +1,7 @@
 package hust.soict.globalict.aims.disc;
+
 import java.time.LocalDate;
+import java.util.StringTokenizer;
 
 public class DigitalVideoDisc {
 	private String title;
@@ -33,7 +35,6 @@ public class DigitalVideoDisc {
 	public static int getNbDigitalVideoDiscs() {
 		return nbDigitalVideoDiscs;
 	}
-
 	public int getId() {
 		return id;
 	}
@@ -53,7 +54,9 @@ public class DigitalVideoDisc {
 	public void setCost(float cost) {
 		this.cost = cost;
 	}
-	
+	public void setId(int id) {
+		this.id = id;
+	}
 	//Create a DVD object by title
 	public DigitalVideoDisc(String title) {
 		super();
@@ -96,10 +99,37 @@ public class DigitalVideoDisc {
 		nbDigitalVideoDiscs++;
 		this.id = nbDigitalVideoDiscs;
 	}
-	
+	public DigitalVideoDisc(String title, String category, String director, int length, float cost, int id) {
+		super();
+		this.title = title;
+		this.category = category;
+		this.director = director;
+		this.length = length;
+		this.cost = cost;
+		this.dateAdded= LocalDate.now();
+		this.id = id;
+	}
 	public String getDetail() {
-		return ("DVD - " + this.title+ " - " + this.category + " - " +
+		return ("ID:" + this.id + " - DVD - " + this.title+ " - " + this.category + " - " +
 				this.director + " - "+ this.length + ": " + this.cost + "$");
+	}
+	
+	public boolean search(String title){
+		int n=title.length();
+		if (n==0) return true;
+		if(this.title.toLowerCase().contains(title.toLowerCase())) return true;
+		else{
+			StringTokenizer stk= new StringTokenizer(title);;
+			while (stk.hasMoreTokens()) {
+				if(this.title.toLowerCase().contains(stk.nextToken().toLowerCase())) return true;
+	        }
+		}
+		return false;
+	}
+	
+	//see detail in store
+	public String viewStore() {
+		return ("ID:" + this.id +". "+ this.title);
 	}
 }
 
