@@ -76,5 +76,7 @@ public class DiskTest {
 		System.out.println();
 		anOrder.printList();
 		//System.out.println(dvd20 instanceof Book);
+		
+		dvd18.play();
 	}
 }

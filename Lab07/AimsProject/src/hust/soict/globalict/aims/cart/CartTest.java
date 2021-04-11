@@ -81,6 +81,19 @@ public class CartTest {
 		
 		book17.seeDetail();
 		anOrder.removeByID(17);
+		
+		
+		CompactDisc cd1= new CompactDisc("Future Nostalgia","Pop music", "Dua Lipa", "Warner Records UK", 23.6f);
+		cd1.addTrack(new Track("Future Nostalgia", 4));
+		cd1.addTrack(new Track("Physical", 3));
+		cd1.addTrack(new Track("Don't Start Now", 3));
+		cd1.addTrack(new Track("Levitating", 3));
+		cd1.addTrack(new Track("Break My Heart", 3));
+		cd1.addTrack(new Track("Break My Heart", 3));
+		cd1.removeTrack(new Track("Levitating", 3));
+		cd1.removeTrack(new Track("Levitating", 3));
+		cd1.seeDetail();
+		cd1.play();
 	}
 }
 

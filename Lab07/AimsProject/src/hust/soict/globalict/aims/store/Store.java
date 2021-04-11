@@ -2,6 +2,10 @@ package hust.soict.globalict.aims.store;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import hust.soict.globalict.aims.media.Book;
+import hust.soict.globalict.aims.media.CompactDisc;
+import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.media.Media;
 
 public class Store {
@@ -59,5 +63,28 @@ public class Store {
 		}
 		return null;
 	}
-
+	
+	public void playMedia(int id) {
+		int flag =0;
+		int i=0;
+		while(i<itemsInStore.size() && flag==0) {
+			if(itemsInStore.get(i).getId()==id) {
+				if(itemsInStore.get(i) instanceof Book) {
+					System.out.println("Can't play a book!");
+				}
+				else if(itemsInStore.get(i) instanceof DigitalVideoDisc) {
+					DigitalVideoDisc disc = (DigitalVideoDisc)itemsInStore.get(i);
+					disc.play();
+				}
+				else if(itemsInStore.get(i) instanceof CompactDisc) {
+					CompactDisc cd = (CompactDisc)itemsInStore.get(i);
+					cd.play();
+				}
+				else System.out.println("The media can't be played");
+				flag=1;
+			}
+			i++;
+		}
+		if(flag==0) System.out.println("No match media with ID:"+id+" is found in the store!");
+	}
 }

@@ -60,5 +60,6 @@ public class StoreTest {
 			anItem.addMedia(book);
 		}
 		anItem.viewStore();
+		dvd5.play();
 	}
 }

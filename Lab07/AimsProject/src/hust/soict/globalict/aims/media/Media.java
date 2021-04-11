@@ -4,13 +4,13 @@ import java.time.LocalDate;
 import java.util.StringTokenizer;
 
 public abstract class Media {
-	protected int id;
-	protected String title;
-	protected String category;
-	protected float cost;
+	private int id;
+	private String title;
+	private String category;
+	private float cost;
 	
-	protected LocalDate dateAdded;
-	protected static int nbMedias = 0;
+	private LocalDate dateAdded;
+	private static int nbMedias = 0;
 	
 	public int getId() {
 		return id;
@@ -28,20 +28,6 @@ public abstract class Media {
 		return cost;
 	}
 
-	
-//	public void setId(int id) {
-//		this.id = id;
-//	}
-//	public void setTitle(String title) {
-//		this.title = title;
-//	}
-//	public void setCategory(String category) {
-//		this.category = category;
-//	}
-//	public void setCost(float cost) {
-//		this.cost = cost;
-//	}
-	
 	public LocalDate getDateAdded() {
 		return dateAdded;
 	}

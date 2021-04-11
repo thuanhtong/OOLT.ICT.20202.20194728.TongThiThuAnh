@@ -1,60 +1,13 @@
 package hust.soict.globalict.aims.media;
 
 import java.util.ArrayList;
-
-public class CompactDisc extends Disc{
+public class CompactDisc extends Disc implements Playable {
 	private String artist;
 	private ArrayList<Track> tracks = new ArrayList<Track>();
 	
 	public String getArtist() {
 		return artist;
 	}
-
-	public CompactDisc(String title, String category, float cost, String director, int length, String artist,
-			ArrayList<Track> tracks) {
-		super(title, category, cost, director, length);
-		this.artist = artist;
-		this.tracks = tracks;
-	}
-	public CompactDisc(int id, String title, String category, float cost, String director, int length, String artist,
-			ArrayList<Track> tracks) {
-		super(id, title, category, cost, director, length);
-		this.artist = artist;
-		this.tracks = tracks;
-	}
-
-	public void addAuthor(Track track) {
-		boolean flag=false;
-		int i=0;
-		while(i<tracks.size()) {
-			if(tracks.get(i).equals(track)==true) {
-				flag=true;
-			}
-			i++;
-		}
-		if(flag==false) {
-			tracks.add(track);
-			System.out.println("Track has been added to the CD");
-		}
-		else System.out.println("Track've already existed in the CD");
-	}
-	
-	public void removeAuthor(Track track) {
-		int flag=-1;
-		int i=0;
-		while(i<tracks.size()) {
-			if(tracks.get(i).equals(track)==true) {
-				flag=i;
-			}
-			i++;
-		}
-		if(flag!=-1) {
-			tracks.remove(flag);
-			System.out.println("Track has been removed from the CD");
-		}
-		else System.out.println("Track not exist in the CD");
-	}
-
 	public int getLength() {
 		int length=0;
 		for(int i=0; i<tracks.size(); i++) {
@@ -63,11 +16,69 @@ public class CompactDisc extends Disc{
 		return length;
 	}
 	
+	public CompactDisc(String title, String category, String artist, String director, float cost) {
+		super(title, category, cost, director);
+		this.artist = artist;
+	}
+	
+	public CompactDisc(String title, String category, String artist, String director, ArrayList<Track> tracks, float cost, int id) {
+		super(id, title, category, cost, director);
+		this.artist = artist;
+		this.tracks = tracks;
+	}
+	
+	public ArrayList<Track> getTracks() {
+		return tracks;
+	}
+	public void addTrack(Track track) {
+		boolean flag=false;
+		int i=0;
+		while(i<tracks.size()) {
+			if(tracks.get(i).getTitle().equals(track.getTitle())==true && tracks.get(i).getLength()==track.getLength() ) {
+				flag=true;
+			}
+			i++;
+		}
+		if(flag==false) {
+			tracks.add(track);
+			System.out.println("Track '" + track.getTitle() +"' has been added to the CD '" + this.getTitle() +"'");
+		}
+		else System.out.println("Track '" + track.getTitle() +"' has already existed in the CD '"+ this.getTitle()+"'");
+	}
+	public void removeTrack(Track track) {
+		int flag=-1;
+		int i=0;
+		while(i<tracks.size()) {
+			if(tracks.get(i).getTitle().equals(track.getTitle())==true && tracks.get(i).getLength()==track.getLength() ) {
+				flag=i;
+			}
+			i++;
+		}
+		if(flag!=-1) {
+			tracks.remove(flag);
+			System.out.println("Track '" + track.getTitle() +"' has been removed from the CD '" + this.getTitle() + "'");
+		}
+		else System.out.println("Track '" + track.getTitle() + "' not exist in the CD '" + this.getTitle() + "'");
+	}
+
+	public String getDetail() {
+		return ("ID:" + this.getId() + " - CD - " + this.getTitle() + " - " + this.getCategory() + " - " + this.artist + " - " + this.getDirector() + " - "+ this.getLength() + ": " + this.getCost() + "$");
+	}
+	public void seeDetail() {
+		System.out.println("ID:" + this.getId() + " - CD - " + this.getTitle()+ " - " + this.getCategory() + " - " + this.artist + " - " + this.getDirector() + " - "+ this.getLength() + ": " + this.getCost() + "$");
+		System.out.println("List of tracks: ");
+		for(int i=0; i<tracks.size(); i++) 
+			System.out.println("Track " + (i+1) + ": " + tracks.get(i).getDetail());
+	}
+	
 	public void play() {
-		System.out.println("Playing CD: " + this.getTitle());
-		System.out.println("CD length: " + this.getLength());
-		for(int i=0; i<tracks.size(); i++) {
-			tracks.get(i).play();
+		if(getLength() <=0 )
+			System.out.println("CD: " +this.getTitle()+ " can't be played! CD's Length <= 0.");
+		else {
+			System.out.println("Playing CD: " + this.getTitle());
+			System.out.println("CD length: " + this.getLength());
+			for(int i=0; i<tracks.size(); i++) 
+				tracks.get(i).play();
 		}
 	}
 

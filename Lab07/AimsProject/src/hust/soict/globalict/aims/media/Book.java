@@ -1,6 +1,5 @@
 package hust.soict.globalict.aims.media;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,19 +13,10 @@ public class Book extends Media {
 	public List<String> getAuthors() {
 		return authors;
 	}
-
-	public void setAuthors(List<String> authors) {
-		this.authors = authors;
-	}
-
 	public String getContent() {
 		return content;
 	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
+	
 	public void addAuthor(String authorName) {
 		boolean flag=false;
 		int i=0;
@@ -58,22 +48,17 @@ public class Book extends Media {
 	public Book(String title, String category, String content, float cost) {
 		super(title, category, cost);
 		this.content = content;
-		this.dateAdded= LocalDate.now();
-		nbMedias++;
-		this.id = nbMedias;
 	}
 
 	public Book(String title, String category, List<String> authors, String content, float cost, int id) {
 		super(id, title, category, cost);
 		this.authors = authors;
 		this.content = content;
-		this.cost = cost;
-		this.dateAdded= LocalDate.now();
 	}
 	
 	public String getDetail() {
-		return ("ID:" + this.id + " - Book - " + this.title+ " - " + this.category + " - " +
-				this.authors  + ": " + this.cost + "$");
+		return ("ID:" + this.getId() + " - Book - " + this.getTitle()+ " - " + this.getCategory() + " - " +
+				this.authors  + ": " + this.getCost() + "$");
 	}
 	
 	public void seeDetail() {
@@ -111,7 +96,7 @@ public class Book extends Media {
 	    	frequency[min_idx]=tmp;
 	    }
 	    System.out.println(frequency.length);
-		System.out.println("ID:" + this.id + " - Book - " + this.title+ " - " + this.category + " - " +
+		System.out.println("ID:" + this.getId() + " - Book - " + this.getTitle()+ " - " + this.getCategory() + " - " +
 				this.authors  + " - Content length:" + token.size());
 		System.out.println("Token|Frequency");
 		for(int i=0; i<token.size(); i++) {

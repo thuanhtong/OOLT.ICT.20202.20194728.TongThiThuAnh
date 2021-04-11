@@ -1,15 +1,6 @@
 package hust.soict.globalict.aims.media;
 
-
 public class DigitalVideoDisc extends Disc implements Playable {
-
-	//Generate Getters and Setters
-	public void setDirector(String director) {
-		this.director = director;
-	}
-	public void setLength(int length) {
-		this.length = length;
-	}
 
 	public DigitalVideoDisc(String title, String category, float cost) {
 		super(title, category, cost);
@@ -22,18 +13,22 @@ public class DigitalVideoDisc extends Disc implements Playable {
 	}
 	
 	public String getDetail() {
-		return ("ID:" + this.id + " - DVD - " + this.title+ " - " + this.category + " - " +
-				this.director + " - "+ this.length + ": " + this.cost + "$");
+		return ("ID:" + this.getId() + " - DVD - " + this.getTitle()+ " - " + this.getCategory() + " - " +
+				this.getDirector() + " - "+ this.getLength() + ": " + this.getCost() + "$");
 	}
 	public void seeDetail() {
-		System.out.println("ID:" + this.id + " - DVD - " + this.title+ " - " + this.category + " - " +
-				this.director + " - "+ this.length + ": " + this.cost + "$");
+		System.out.println("ID:" + this.getId() + " - DVD - " + this.getTitle()+ " - " + this.getCategory() + " - " +
+				this.getDirector() + " - "+ this.getLength() + ": " + this.getCost() + "$");
 	}
 	
 	@Override
 	public void play() {
-		System.out.println("Playing DVD: " + this.getTitle());
-		System.out.println("DVD length: " + this.getLength());
+		if(this.getLength() <=0 )
+			System.out.println("DVD: " +this.getTitle()+ " can't be played! DVD's Length <=0.");
+		else {
+			System.out.println("Playing DVD: " + this.getTitle());
+			System.out.println("DVD length: " + this.getLength());
+		}
 	}
 }
 
