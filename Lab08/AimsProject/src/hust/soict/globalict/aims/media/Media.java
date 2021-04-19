@@ -1,9 +1,13 @@
 package hust.soict.globalict.aims.media;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.StringTokenizer;
 
-public abstract class Media {
+public abstract class Media implements Comparable<Media> {
+	public static final Comparator<Media> COMPARE_BY_TITLE_COST= new MediaComparatorByTitleCost();
+	public static final Comparator<Media> COMPARE_BY_COST_TITLE= new MediaComparatorByCostTitle();
+	
 	private int id;
 	private String title;
 	private String category;
@@ -64,7 +68,7 @@ public abstract class Media {
 	public boolean search(String title){
 		int n=title.length();
 		if (n==0) return true;
-		if(this.title.toLowerCase().contains(title.toLowerCase())) return true;
+		if (this.title.toLowerCase().contains(title.toLowerCase())) return true;
 		else{
 			StringTokenizer stk= new StringTokenizer(title);
 			while (stk.hasMoreTokens()) {
@@ -82,14 +86,14 @@ public abstract class Media {
 		else return false;
 	}
 	
+	@Override
 	public int compareTo(Media o) {
 		// TODO Auto-generated method stub
-		if (this.getTitle().compareTo(o.getTitle()) < 0) return -1;
-		else if (this.getTitle().compareTo(o.getTitle()) > 0) return 1;
+		if (this.getTitle().compareTo(o.getTitle())==0) {
+			return this.getCategory().compareTo(o.getCategory());
+		}
 		else{
-			if (this.getCost() > o.getCost()) return -1;
-			else if(this.getCost() < o.getCost()) return 1;
-			else return 0;
+			return this.getTitle().compareTo(o.getTitle());
 		}
 	}
 }

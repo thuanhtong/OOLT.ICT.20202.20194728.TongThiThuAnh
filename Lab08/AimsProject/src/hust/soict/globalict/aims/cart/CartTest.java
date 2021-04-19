@@ -93,6 +93,9 @@ public class CartTest {
 		cd1.removeTrack(new Track("Levitating", 3));
 		cd1.removeTrack(new Track("Levitating", 3));
 		cd1.seeDetail();
+		
+		
+		
 		cd1.play();
 		anOrder.addMedia(cd1);
 		anOrder.removeMedia(cd1);

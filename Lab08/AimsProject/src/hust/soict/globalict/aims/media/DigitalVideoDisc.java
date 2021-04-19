@@ -1,6 +1,6 @@
 package hust.soict.globalict.aims.media;
 
-public class DigitalVideoDisc extends Disc implements Playable,Comparable<DigitalVideoDisc> {
+public class DigitalVideoDisc extends Disc implements Playable {
 
 	public DigitalVideoDisc(String title, String category, float cost) {
 		super(title, category, cost);
@@ -30,17 +30,6 @@ public class DigitalVideoDisc extends Disc implements Playable,Comparable<Digita
 			System.out.println("DVD length: " + this.getLength());
 		}
 	}
-	
-	@Override
-	public int compareTo(DigitalVideoDisc o) {
-		// TODO Auto-generated method stub
-		if (this.getTitle().compareTo(o.getTitle()) < 0) return -1;
-		else if (this.getTitle().compareTo(o.getTitle()) > 0) return 1;
-		else{
-			if (this.getCost() > o.getCost()) return -1;
-			else if(this.getCost() < o.getCost()) return 1;
-			else return 0;
-		}
-	}
+
 }
 

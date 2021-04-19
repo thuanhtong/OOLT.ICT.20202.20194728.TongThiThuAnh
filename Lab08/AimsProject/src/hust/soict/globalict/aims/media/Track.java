@@ -39,6 +39,13 @@ public class Track implements Playable, Comparable<Track>{
 	@Override
 	public int compareTo(Track o) {
 		// TODO Auto-generated method stub
-		return 0;
+		if (this.getTitle().compareTo(o.getTitle())==0) {
+			if (this.getLength() > o.getLength()) return -1;
+			else if (this.getLength() < o.getLength()) return 1;
+			else return 0;
+		}
+		else{
+			return this.getTitle().compareTo(o.getTitle());
+		}
 	}
 }

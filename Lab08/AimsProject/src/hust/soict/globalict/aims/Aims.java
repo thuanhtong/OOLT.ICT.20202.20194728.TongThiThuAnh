@@ -43,10 +43,10 @@ public class Aims {
 		//MemoryDaemon md= new MemoryDaemon();
 		//md.run();
 		
-		Thread dt = new Thread(new MemoryDaemon(), "My Daemon Thread");
-        dt.setDaemon(true);
-        dt.start();
-        
+//		Thread dt = new Thread(new MemoryDaemon(), "My Daemon Thread");
+//        dt.setDaemon(true);
+//        dt.start();
+		
 		Cart anOrder = new Cart();
 		Store anItem = new Store();
 		// Create new dvd objects and add them to the store
@@ -180,9 +180,9 @@ public class Aims {
 				System.out.print("Your choice: ");
 				show = sc.nextInt();
 				switch(show) {
-					case 0: 
+					case 0: //EXIT
 						break;
-					case 1:
+					case 1: //View store
 						int store;
 						do {
 							System.out.println("--------------------------------------------------------");
@@ -193,7 +193,7 @@ public class Aims {
 							switch(store) {
 							case 0:
 								break;
-							case 1:
+							case 1: //See a media’s details
 								System.out.print("Enter media's ID to see details: ");
 								int id = sc.nextInt();
 								tmp = anItem.searchByID(id);
@@ -206,24 +206,24 @@ public class Aims {
 									System.out.print("Your choice: ");
 									choice = sc.nextInt();
 									if(choice ==1) 
-										anOrder.addToStore(tmp);
+										anOrder.addToCart(tmp);
 									else if(choice ==2) System.out.println();
 									else System.out.println("Wrong functionality!");
 								}
 								break;
-							case 2:
+							case 2: //Add a media to cart
 								System.out.print("Enter DVD's ID you want to add to the cart: ");
 								id = sc.nextInt();
 								tmp = anItem.searchByID(id);
 								if(tmp==null) System.out.println("No match media with ID:"+id+" is found");
-								else anOrder.addToStore(tmp);
+								else anOrder.addToCart(tmp);
 								break;
-							case 3:
+							case 3: //Play medias in store
 								System.out.print("Enter Media's ID to play: ");
 								id = sc.nextInt();
 								anItem.playMedia(id);
 								break;
-							case 4:
+							case 4: //See current cart
 								int cart;
 								do {
 									System.out.println("--------------------------------------------------------");
@@ -232,7 +232,7 @@ public class Aims {
 									System.out.print("Your choice: ");
 									cart = sc.nextInt();
 									switch(cart) {
-									case 0:
+									case 0: //exit
 										break;
 									case 1:
 										System.out.println("FILTER MEDIA IN CART: ");
@@ -255,8 +255,8 @@ public class Aims {
 										break;
 									case 2:
 										System.out.println("SORT MEDIA IN CART: ");
-										System.out.println("1. By Title");
-										System.out.println("2. By Cost");
+										System.out.println("1. By Title - Cost");
+										System.out.println("2. By Cost - Title");
 										System.out.print("Your choice: ");
 										choice = sc.nextInt();
 										if(choice ==1) {
@@ -295,7 +295,7 @@ public class Aims {
 							}
 						}while(store!=0);
 						break;
-					case 2:
+					case 2: //Update Store
 						System.out.println("--------------------------------------------------------");
 						anItem.viewStore();
 						System.out.println("UPDATE STORE: ");
@@ -309,7 +309,7 @@ public class Aims {
 							System.out.println("3. Add CD");
 							System.out.print("Your choice: ");
 							int addChoice = sc.nextInt();
-							if(addChoice ==1) {
+							if(addChoice ==1) { //Add DVD
 								sc.nextLine();
 								System.out.print("Enter Title: ");
 								String title =sc.nextLine();
@@ -323,7 +323,7 @@ public class Aims {
 								float cost=sc.nextFloat();
 								anItem.addMedia(new DigitalVideoDisc(title, category, director, length, (float)cost));
 							}
-							else if(addChoice ==2) {
+							else if(addChoice ==2) { //Add Book
 								sc.nextLine();
 								System.out.print("Enter Title: ");
 								String title =sc.nextLine();
@@ -339,7 +339,7 @@ public class Aims {
 								book.addAuthor(Author);
 								anItem.addMedia(book);
 							}
-							else if(addChoice ==3) {
+							else if(addChoice ==3) { //Add CD
 								sc.nextLine();
 								System.out.print("Enter Title: ");
 								String title =sc.nextLine();
@@ -362,18 +362,21 @@ public class Aims {
 									System.out.print("Enter Length: ");
 									int trackLength=sc.nextInt();
 									cd.addTrack(new Track(trackTitle, trackLength));
+									
+									//if track is already exsited in the cd, user enter again
+									if(cd.getTracks().size() <i+1) i--;
 								}
 								anItem.addMedia(cd);
 							}
 							else System.out.println("Wrong functionality!");
 							
 						}
-						else if(choice==2) {
+						else if(choice==2) { //Remove media from store
 							System.out.print("Enter Media's ID to remove from store: ");
 							int id = sc.nextInt();
 							tmp = anItem.searchByID(id);
 							anItem.removeMedia(tmp);
-							//remove dvd which has been removed from store from cart
+							//remove medias which has been removed from store from cart
 							int flag=anOrder.checkId(id);
 							while(flag>0) {
 								anOrder.removeByID(id);
@@ -382,7 +385,7 @@ public class Aims {
 						}
 						else System.out.println("Wrong functionality!");
 						break;
-					case 3:
+					case 3: //See current cart
 						int cart;
 						do {
 							System.out.println("--------------------------------------------------------");
@@ -391,7 +394,7 @@ public class Aims {
 							System.out.print("Your choice: ");
 							cart = sc.nextInt();
 							switch(cart) {
-							case 0:
+							case 0: //exit
 								break;
 							case 1:
 								System.out.println("FILTER MEDIA IN CART: ");
@@ -414,8 +417,8 @@ public class Aims {
 								break;
 							case 2:
 								System.out.println("SORT MEDIA IN CART: ");
-								System.out.println("1. By Title");
-								System.out.println("2. By Cost");
+								System.out.println("1. By Title - Cost");
+								System.out.println("2. By Cost - Title");
 								System.out.print("Your choice: ");
 								choice = sc.nextInt();
 								if(choice ==1) {

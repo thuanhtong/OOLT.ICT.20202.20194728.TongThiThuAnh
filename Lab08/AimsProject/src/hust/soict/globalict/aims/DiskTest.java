@@ -46,7 +46,7 @@ public class DiskTest {
 		anOrder.addMedia(dvd6);
 		
 		System.out.println();
-		dvd6.seeDetail();
+		dvd1.seeDetail();
 		System.out.println(anOrder.totalCost());
 		anOrder.sortByCost();
 		System.out.println();

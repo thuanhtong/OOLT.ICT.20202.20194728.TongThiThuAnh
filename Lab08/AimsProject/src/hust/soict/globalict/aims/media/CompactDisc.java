@@ -1,7 +1,7 @@
 package hust.soict.globalict.aims.media;
 
 import java.util.ArrayList;
-public class CompactDisc extends Disc implements Playable,Comparable<CompactDisc> {
+public class CompactDisc extends Disc implements Playable {
 	private String artist;
 	private ArrayList<Track> tracks = new ArrayList<Track>();
 	
@@ -60,7 +60,7 @@ public class CompactDisc extends Disc implements Playable,Comparable<CompactDisc
 		}
 		else System.out.println("Track '" + track.getTitle() + "' not exist in the CD '" + this.getTitle() + "'");
 	}
-
+	
 	public String getDetail() {
 		return ("ID:" + this.getId() + " - CD - " + this.getTitle() + " - " + this.getCategory() + " - " + this.artist + " - " + this.getDirector() + " - "+ this.getLength() + ": " + this.getCost() + "$");
 	}
@@ -82,15 +82,4 @@ public class CompactDisc extends Disc implements Playable,Comparable<CompactDisc
 		}
 	}
 	
-	@Override
-	public int compareTo(CompactDisc o) {
-		// TODO Auto-generated method stub
-		if (this.getTitle().compareTo(o.getTitle()) < 0) return -1;
-		else if (this.getTitle().compareTo(o.getTitle()) > 0) return 1;
-		else{
-			if (this.getCost() > o.getCost()) return -1;
-			else if(this.getCost() < o.getCost()) return 1;
-			else return 0;
-		}
-	}
 }
