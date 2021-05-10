@@ -15,10 +15,9 @@ public class Store {
 		return itemsInStore;
 	}
 
-	public void setItemsInStore(ArrayList<Media> itemsInStore) {
-		this.itemsInStore = itemsInStore;
+	public int storeSize() {
+		return itemsInStore.size();
 	}
-
 	public void addMedia(Media media) {
 		itemsInStore.add(media);
 		System.out.println("'" + media.getTitle() + "' has been added to the store.");
