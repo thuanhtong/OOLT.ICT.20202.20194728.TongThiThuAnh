@@ -1,0 +1,7 @@
+The Aims class must be updated to handle any exceptions generated when the play() methods are
+called. What happens when you don’t update for them to catch?
+	- if we don't update for them, the program will be caused by some problems about Unhandled exception
+which make the program stop working correctly:
+	Exception in thread "main" java.lang.Error: Unresolved compilation problem: 
+	Unhandled exception type PlayerException
+	
